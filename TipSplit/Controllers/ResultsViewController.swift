@@ -12,10 +12,17 @@ class ResultsViewController: UIViewController {
 
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var settingsLabel: UILabel!
+    
+    var totalValue: String?
+    var settingsText: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        totalLabel.text = totalValue
+        settingsLabel.text = settingsText
+        
     }
     
 
@@ -30,6 +37,7 @@ class ResultsViewController: UIViewController {
     */
 
     @IBAction func recalculatePressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

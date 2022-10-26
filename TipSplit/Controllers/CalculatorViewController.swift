@@ -19,6 +19,7 @@ class CalculatorViewController: UIViewController {
     var selectedPctValue: Float = 0.1
     var numberOfPeople: Int = 2
     var enteredAmount: Float = 0.0
+    var totalEach: Float = 0.0
 
     @IBAction func tipChanged(_ sender: UIButton) {
         highlightSelectedButton(sender)
@@ -33,9 +34,9 @@ class CalculatorViewController: UIViewController {
     @IBAction func calculatePressed(_ sender: UIButton) {
         enteredAmount = Float(billTextField.text!) ?? enteredAmount
         let enteredAmountPlusTip = enteredAmount + (enteredAmount * selectedPctValue)
-        let totalEach = enteredAmountPlusTip / Float(numberOfPeople)
+        totalEach = enteredAmountPlusTip / Float(numberOfPeople)
         
-        print("\(String(format: "%.2f", totalEach))")
+        self.performSegue(withIdentifier: "goToResult", sender: self)
     }
     
     func highlightSelectedButton(_ sender: UIButton) {
@@ -51,6 +52,18 @@ class CalculatorViewController: UIViewController {
         let pctValue = Float(stringWihtNoPctChar)
         let floatPctValue = (pctValue ?? 0) / 100.0
         selectedPctValue = floatPctValue
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ResultsViewController
+        destinationVC.totalValue = String(format: "%.2f", totalEach)
+        destinationVC.settingsText = getSettingText(people: numberOfPeople, pct: selectedPctValue)
+    }
+    
+    func getSettingText(people: Int, pct: Float) -> String {
+        let pctToInt = Int(pct * 100)
+        let formattedText = String(format: "Spli between %d people, with %d%% tip.", people, pctToInt)
+        return formattedText
     }
 }
 
