@@ -18,6 +18,7 @@ class CalculatorViewController: UIViewController {
     
     var selectedPctValue: Float = 0.1
     var numberOfPeople: Int = 2
+    var enteredAmount: Float = 0.0
 
     @IBAction func tipChanged(_ sender: UIButton) {
         highlightSelectedButton(sender)
@@ -30,10 +31,15 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
-        print("\(numberOfPeople)")
+        enteredAmount = Float(billTextField.text!) ?? enteredAmount
+        let enteredAmountPlusTip = enteredAmount + (enteredAmount * selectedPctValue)
+        let totalEach = enteredAmountPlusTip / Float(numberOfPeople)
+        
+        print("\(String(format: "%.2f", totalEach))")
     }
     
     func highlightSelectedButton(_ sender: UIButton) {
+        billTextField.endEditing(true)
         // unselecting all buttons
         zeroPctButton.isSelected = false
         tenPctButton.isSelected = false
