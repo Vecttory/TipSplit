@@ -16,17 +16,21 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var twentyPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UILabel!
     
-    var selectedPct: UIButton?
+    var selectedPctValue: Float = 0.1
+    var numberOfPeople: Int = 2
 
     @IBAction func tipChanged(_ sender: UIButton) {
         highlightSelectedButton(sender)
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        let senderIntValue = Int(sender.value)
+        splitNumberLabel.text = String(senderIntValue)
+        numberOfPeople = senderIntValue
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
-        
+        print("\(numberOfPeople)")
     }
     
     func highlightSelectedButton(_ sender: UIButton) {
@@ -40,8 +44,7 @@ class CalculatorViewController: UIViewController {
         let stringWihtNoPctChar = sender.currentTitle!.replacingOccurrences(of: "%", with: "")
         let pctValue = Float(stringWihtNoPctChar)
         let floatPctValue = (pctValue ?? 0) / 100.0
-        print("\(floatPctValue)")
-        selectedPct = sender
+        selectedPctValue = floatPctValue
     }
 }
 

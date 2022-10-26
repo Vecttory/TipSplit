@@ -49,7 +49,7 @@
                                                             <action selector="tipChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pI5-UI-JNx"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y6-Kf-yF0">
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y6-Kf-yF0">
                                                         <rect key="frame" x="94.333333333333329" y="0.0" width="161.33333333333337" height="54"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="54" id="i5j-Nk-Hb1"/>
