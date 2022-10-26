@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Tipsy.xcodeproj">
+      location = "self:/Users/vetto/Code/IOS/TipSplit/TipSplit.xcodeproj">
    </FileRef>
 </Workspace>
