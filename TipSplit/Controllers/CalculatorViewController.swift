@@ -15,31 +15,19 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var tenPctButton: UIButton!
     @IBOutlet weak var twentyPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UILabel!
+    @IBOutlet weak var stepperInput: UIStepper!
     
-    var selectedPctValue: Float = 0.1
-    var numberOfPeople: Int = 2
-    var enteredAmount: Float = 0.0
-    var totalEach: Float = 0.0
+    var tipCalculatorBrain = TipCalculatorBrain()
+
+    var selectedPctValue: Float = 0.0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // This matches with the default selected tip percenta in the UI
+        selectedPctValue = 0.1
+    }
 
     @IBAction func tipChanged(_ sender: UIButton) {
-        highlightSelectedButton(sender)
-    }
-    
-    @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        let senderIntValue = Int(sender.value)
-        splitNumberLabel.text = String(senderIntValue)
-        numberOfPeople = senderIntValue
-    }
-    
-    @IBAction func calculatePressed(_ sender: UIButton) {
-        enteredAmount = Float(billTextField.text!) ?? enteredAmount
-        let enteredAmountPlusTip = enteredAmount + (enteredAmount * selectedPctValue)
-        totalEach = enteredAmountPlusTip / Float(numberOfPeople)
-        
-        self.performSegue(withIdentifier: "goToResult", sender: self)
-    }
-    
-    func highlightSelectedButton(_ sender: UIButton) {
         billTextField.endEditing(true)
         // unselecting all buttons
         zeroPctButton.isSelected = false
@@ -48,22 +36,37 @@ class CalculatorViewController: UIViewController {
         // highlighting pressed button
         sender.isSelected = true
         // getting float value from button title
-        let stringWihtNoPctChar = sender.currentTitle!.replacingOccurrences(of: "%", with: "")
-        let pctValue = Float(stringWihtNoPctChar)
-        let floatPctValue = (pctValue ?? 0) / 100.0
-        selectedPctValue = floatPctValue
+        selectedPctValue = percentageStringToFloat(sender.currentTitle!)
+    }
+    
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        let senderIntValue = Int(sender.value)
+        splitNumberLabel.text = String(senderIntValue)
+    }
+    
+    @IBAction func calculatePressed(_ sender: UIButton) {
+        let amount = Float(billTextField.text!) ?? 0.0
+        let people = Int(stepperInput.value)
+        
+        tipCalculatorBrain.calculateTip(amount: amount, people: people, percentage: selectedPctValue)
+        
+        self.performSegue(withIdentifier: "goToResult", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! ResultsViewController
-        destinationVC.totalValue = String(format: "%.2f", totalEach)
-        destinationVC.settingsText = getSettingText(people: numberOfPeople, pct: selectedPctValue)
+        if segue.identifier == "goToResult" {
+            let destinationVC = segue.destination as! ResultsViewController
+            destinationVC.totalValue = tipCalculatorBrain.getTotalEachToString()
+            destinationVC.settingsText = tipCalculatorBrain.getMessage()
+        }
     }
     
-    func getSettingText(people: Int, pct: Float) -> String {
-        let pctToInt = Int(pct * 100)
-        let formattedText = String(format: "Spli between %d people, with %d%% tip.", people, pctToInt)
-        return formattedText
+    func percentageStringToFloat(_ percentage: String) -> Float {
+        let stringWihtNoPctChar = percentage.replacingOccurrences(of: "%", with: "")
+        let pctValue = Float(stringWihtNoPctChar)
+        let floatPctValue = (pctValue ?? 0) / 100.0
+        return floatPctValue
     }
+    
 }
 

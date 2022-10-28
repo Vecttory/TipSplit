@@ -14,6 +14,8 @@
 		ADB6895C2326708E006D4E2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADB6895B2326708E006D4E2B /* Assets.xcassets */; };
 		ADB6895F2326708E006D4E2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADB6895D2326708E006D4E2B /* LaunchScreen.storyboard */; };
 		B0B49B302908DEBF00DF2F5D /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B49B2F2908DEBF00DF2F5D /* ResultsViewController.swift */; };
+		B0EC6D25290B8EF600E0A795 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EC6D24290B8EF600E0A795 /* Tip.swift */; };
+		B0EC6D27290B8F4B00E0A795 /* TipCalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EC6D26290B8F4B00E0A795 /* TipCalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		ADB6895E2326708E006D4E2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADB689602326708E006D4E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0B49B2F2908DEBF00DF2F5D /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		B0EC6D24290B8EF600E0A795 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		B0EC6D26290B8F4B00E0A795 /* TipCalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +64,9 @@
 			children = (
 				ADB689522326708D006D4E2B /* AppDelegate.swift */,
 				ADB689542326708D006D4E2B /* SceneDelegate.swift */,
+				B0EC6D23290B8DA500E0A795 /* Models */,
+				B0EC6D22290B8CF000E0A795 /* Views */,
 				B0B49B312908DED500DF2F5D /* Controllers */,
-				ADB689582326708D006D4E2B /* Main.storyboard */,
 				ADB6895B2326708E006D4E2B /* Assets.xcassets */,
 				ADB6895D2326708E006D4E2B /* LaunchScreen.storyboard */,
 				ADB689602326708E006D4E2B /* Info.plist */,
@@ -76,6 +81,23 @@
 				B0B49B2F2908DEBF00DF2F5D /* ResultsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B0EC6D22290B8CF000E0A795 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ADB689582326708D006D4E2B /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B0EC6D23290B8DA500E0A795 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B0EC6D24290B8EF600E0A795 /* Tip.swift */,
+				B0EC6D26290B8F4B00E0A795 /* TipCalculatorBrain.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +173,8 @@
 			files = (
 				ADB689572326708D006D4E2B /* CalculatorViewController.swift in Sources */,
 				ADB689532326708D006D4E2B /* AppDelegate.swift in Sources */,
+				B0EC6D25290B8EF600E0A795 /* Tip.swift in Sources */,
+				B0EC6D27290B8F4B00E0A795 /* TipCalculatorBrain.swift in Sources */,
 				ADB689552326708D006D4E2B /* SceneDelegate.swift in Sources */,
 				B0B49B302908DEBF00DF2F5D /* ResultsViewController.swift in Sources */,
 			);

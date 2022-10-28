@@ -201,6 +201,7 @@
                     <connections>
                         <outlet property="billTextField" destination="wcN-ka-Q4F" id="JLk-Lz-g2b"/>
                         <outlet property="splitNumberLabel" destination="bSy-Yc-886" id="QID-2I-596"/>
+                        <outlet property="stepperInput" destination="haq-5m-pqs" id="95t-WH-AOx"/>
                         <outlet property="tenPctButton" destination="7y6-Kf-yF0" id="1cb-lS-cdP"/>
                         <outlet property="twentyPctButton" destination="UtR-dU-EKt" id="8ef-L4-oLk"/>
                         <outlet property="zeroPctButton" destination="XzR-0E-Xf7" id="iIY-R1-rzW"/>
